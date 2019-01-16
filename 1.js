@@ -14,7 +14,7 @@ $("#btnDone").hide();
 				"<span>"+
 				((taskList[i]["isDone"]) ? "<label class='label label-success'>Done</label>" : "<label class='label label-warning'>Pending</label>")+
 				"<a href='javascript:;' onclick='modifyTask("+taskList[i]["index"]+")'>Modify</a>"+
-				"<a href='javascript:;'>Remove</a>"+
+				"<a href='javascript:;' onclick='removeTask("+taskList[i]["index"]+")'>Remove</a>"+
 				"</span>"+
 				"<h4>" + taskList[i]["name"] + "</h4> <div class='text-muted'>" + taskList[i]["category"] + "</div>" + 
 				"</li>";
@@ -40,6 +40,13 @@ $("#btnDone").hide();
 		$("#btnAdd").hide();
 	}
 
+	function removeList(index){
+		var item = taskList[index];
+		taskList.splice(item,1);
+		localStorage.setItem("MyTaskList", JSON.stringify(taskList));
+		getTaskList();
+
+    }
 
 	$(document).ready(function(){		
 		$("#btnAdd").click(function(){
