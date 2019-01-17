@@ -1,0 +1,64 @@
+.header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+
+body{
+	font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body{
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#555;
+}
+
+*{
+  border-radius:0!important;
+}
+
+ul{
+  margin-top:20px;
+  cursor:pointer;
+  padding: 10px;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 20px;
+  background: #FFF;
+  border:solid 1px #EEE;
+  border-bottom:0;
+  transition: all ease 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ul li:last-child{
+   border-bottom:solid 1px #EEE;
+}
+
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+ul li h4{
+	margin:0;
+}
+
+ul li span{
+	float:right;
+}
+
+ul li span a{
+margin-left:10px;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #EEE;
+}

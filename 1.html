@@ -4,21 +4,27 @@
  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <title>Tasks </title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-
+<link rel="stylesheet" type="text/css" href="1.css">
 </head>
 
 <body>
-
+	<div class="header">
+		<h1>ToDo List</h1>
+	</div>
+	
 	<div class="form-inline">
 	  <div class="form-group">
 		<input type="text" class="form-control" id="txtName" placeholder="Name">
 	  </div>
 	  <div class="form-group">
 		<input type="text" class="form-control" id="txtCategory" placeholder="Category">
-	  </div>
+		</div>
 	  <button id="btnAdd" type="submit" class="btn btn-success">Add</button>
-	  <button id="btnDone" type="submit" class="btn btn-info">Done</button>
+		<button id="btnDone" type="submit" class="btn btn-info">Done</button>
 	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" id="txtSearch" placeholder="Search">
+	  </div>
 
 
 	<ul id="listNames">
