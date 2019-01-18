@@ -47,6 +47,10 @@ $("#btnDone").hide();// Hide done Button
 
 	//Adding Remove Functionality
 	function removeTask(index){
+		var len = $("li").length;
+		if (len == 1) {
+			$(".search").hide();
+		} 	
 		for(var i=0;i<taskList.length;i++){
 			if(taskList[i]["index"] == index)
 			{
@@ -77,8 +81,13 @@ $("#btnDone").hide();// Hide done Button
 	});
 
 	//Adding Add Button Functionality
-	$(document).ready(function(){		
+	$(document).ready(function(){	
+		var len = $("li").length;
+		if (len > 0) {
+			$(".search").show();
+		} 	
 		$("#btnAdd").click(function(){
+			$(".search").show();
 		  var obj = {
 			index: taskList.length,
 			name: $("#txtName").val(),
