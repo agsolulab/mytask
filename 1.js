@@ -1,6 +1,7 @@
-$("#btnDone").hide();
-	var taskList = [];
+$("#btnDone").hide();// Hide done Button
+	var taskList = []; // Make a array
 	getTaskList(false);
+
 
 	function getTaskList(isSearch){
 		if(!isSearch){
@@ -20,10 +21,11 @@ $("#btnDone").hide();
 				"</span>"+
 				"<h4>" + taskList[i]["name"] + "</h4> <div class='text-muted'>" + taskList[i]["category"] + "</div>" + 
 				"</li>";
-			$("#listNames").append(html);
+			$("#listNames").append(html);// Show data in the home Page
 		}
 	}
 
+	//Adding done and pending functionality
 	function toggleStatus(index){
 		var item = taskList[index];
 		item["isDone"] = !item["isDone"];		
@@ -33,6 +35,7 @@ $("#btnDone").hide();
 		getTaskList(false);
 	}
 
+	//Adding Modify Functionality
 	function modifyTask(index){
 		var item = taskList[index];
 		$("#txtName").val(item["name"]);
@@ -42,14 +45,23 @@ $("#btnDone").hide();
 		$("#btnAdd").hide();
 	}
 
+	//Adding Remove Functionality
 	function removeTask(index){
-		var item = taskList[index];
-		taskList.splice(item,1);
-		localStorage.setItem("MyTaskList", JSON.stringify(taskList));
-		getTaskList(false);
+		for(var i=0;i<taskList.length;i++){
+			if(taskList[i]["index"] == index)
+			{
+				taskList.splice(i,1);
+				localStorage.setItem("MyTaskList", JSON.stringify(taskList));
+				getTaskList(false);
+
+				break;
+			}
+		}
+	
+		
 	}
 
-
+	//Adding Search Functionality
 	function searchTasklist(term){
 		var arr = $.grep(taskList, function(item){
 			return item["name"].indexOf(term) > -1 || item["category"].indexOf(term) > -1;
@@ -59,8 +71,13 @@ $("#btnDone").hide();
 		getTaskList(true);
 	}
 
-	
-		$(document).ready(function(){		
+	// Adding Search Button Functionality
+	$("#btnSubmit").click(function() {
+		searchTasklist($("#txtSearch").val());
+	});
+
+	//Adding Add Button Functionality
+	$(document).ready(function(){		
 		$("#btnAdd").click(function(){
 		  var obj = {
 			index: taskList.length,
@@ -77,6 +94,7 @@ $("#btnDone").hide();
 		  getTaskList(false);
 		});
 		
+		// Adding Done Button Functionality
 		$("#btnDone").click(function() {
 			var index = $(this).attr("data-index");
 			var item = taskList[index];
@@ -94,8 +112,7 @@ $("#btnDone").hide();
 			$("#txtCategory").val("");
 		});
 	
-
-	
+		//Adding Drag and Drop Functionality
 		$("#listNames").sortable({
 			cursor: "move",
 			revert: true,
@@ -123,7 +140,8 @@ $("#btnDone").hide();
 		
 		
 		$("#txtSearch").change(function(){
-			searchTasklist($(this).val());
+			// debugger;
+			
 		})
 
 	 
